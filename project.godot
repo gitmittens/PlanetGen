@@ -15,11 +15,6 @@ run/main_scene="uid://b8q4ajsi6oaht"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-
 [input]
 
 zoom_in={
