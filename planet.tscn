@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b8q4ajsi6oaht"]
+
+[ext_resource type="Script" uid="uid://n10sjbl26jip" path="res://camera.gd" id="1_1odxm"]
+[ext_resource type="Script" uid="uid://qros2u1kfemk" path="res://planet.gd" id="1_mtr83"]
+[ext_resource type="Texture2D" uid="uid://c6ldoshyb6gmx" path="res://skybox-orion-252-4096.png" id="2_a75xc"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_x6khl"]
+panorama = ExtResource("2_a75xc")
+
+[sub_resource type="Sky" id="Sky_x32po"]
+sky_material = SubResource("PanoramaSkyMaterial_x6khl")
+
+[sub_resource type="Environment" id="Environment_deh1b"]
+background_mode = 2
+sky = SubResource("Sky_x32po")
+
+[sub_resource type="SphereMesh" id="SphereMesh_1odxm"]
+radius = 1.0
+height = 2.0
+radial_segments = 128
+rings = 64
+
+[node name="Planet" type="Node3D" unique_id=1953024612]
+script = ExtResource("1_mtr83")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1618926717]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1614504854]
+environment = SubResource("Environment_deh1b")
+
+[node name="PlanetRender" type="MeshInstance3D" parent="." unique_id=545993793]
+mesh = SubResource("SphereMesh_1odxm")
+
+[node name="Camera" type="Node3D" parent="." unique_id=432798580]
+script = ExtResource("1_1odxm")
+
+[node name="Camera3D" type="Camera3D" parent="Camera" unique_id=1079470310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1531677446]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
